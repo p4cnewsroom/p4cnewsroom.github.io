@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up - P4C Newsroom Free Weekly Lesson Packs</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background-color: #f5f0e8;
+    font-family: Georgia, serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    max-width: 620px;
+    width: 100%;
+  }
+
+  /* BANNER */
+  .banner img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* LOGO SECTION */
+  .logo-section {
+    background-color: #f5f0e8;
+    text-align: center;
+    padding: 30px 40px 20px;
+  }
+  .logo-section img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+  }
+
+  /* HEADLINE */
+  .headline {
+    background-color: #f5f0e8;
+    text-align: center;
+    padding: 0 40px 8px;
+  }
+  .headline h1 {
+    font-family: Georgia, serif;
+    font-size: 26px;
+    font-weight: bold;
+    color: #1a2a5e;
+    letter-spacing: -0.5px;
+  }
+
+  /* SUBHEADING */
+  .subheading {
+    background-color: #f5f0e8;
+    text-align: center;
+    padding: 0 40px 28px;
+  }
+  .subheading p {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    color: #333333;
+  }
+
+  /* RED DIVIDER */
+  .divider {
+    background-color: #cc2229;
+    height: 4px;
+  }
+
+  /* BODY COPY */
+  .body-copy {
+    padding: 28px 40px 20px;
+  }
+  .body-copy p {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #444444;
+    margin-bottom: 12px;
+  }
+  .body-copy p:last-child { margin-bottom: 0; }
+  .body-copy strong { color: #cc2229; }
+
+  /* THREE FORMATS */
+  .formats {
+    padding: 0 40px 24px;
+  }
+  .formats-inner {
+    background-color: #f5f0e8;
+    border-radius: 8px;
+    padding: 18px;
+  }
+  .formats-inner p.label {
+    font-family: Georgia, serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: #1a2a5e;
+    margin-bottom: 14px;
+  }
+  .format-grid {
+    display: flex;
+    gap: 8px;
+  }
+  .format-card {
+    flex: 1;
+    background: #ffffff;
+    border-radius: 6px;
+    padding: 10px 12px;
+  }
+  .format-card.red { border-left: 3px solid #cc2229; }
+  .format-card.navy { border-left: 3px solid #1a2a5e; }
+  .format-card .tag {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  .format-card.red .tag { color: #cc2229; }
+  .format-card.navy .tag { color: #1a2a5e; }
+  .format-card p {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    color: #555555;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* SIGN UP SECTION */
+  .signup-section {
+    background-color: #1a2a5e;
+    padding: 30px 40px 34px;
+  }
+  .signup-section h2 {
+    font-family: Georgia, serif;
+    font-size: 20px;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+  .signup-section p {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: #d0d8f0;
+    line-height: 1.7;
+    margin-bottom: 22px;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .form-row input[type="email"] {
+    flex: 1;
+    min-width: 200px;
+    padding: 13px 16px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    color: #222222;
+    background: #ffffff;
+  }
+  .form-row input[type="email"]::placeholder {
+    color: #999999;
+  }
+
+  .form-row button {
+    background-color: #cc2229;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    padding: 13px 24px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s;
+  }
+  .form-row button:hover {
+    background-color: #a81b21;
+  }
+  .form-row button:disabled {
+    background-color: #888888;
+    cursor: not-allowed;
+  }
+
+  .privacy-note {
+    font-family: Arial, sans-serif;
+    font-size: 11px !important;
+    color: #8899bb !important;
+    margin-top: 12px !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* SUCCESS STATE */
+  .success-box {
+    display: none;
+    background-color: #1a5e2a;
+    border-radius: 6px;
+    padding: 20px 24px;
+    text-align: center;
+  }
+  .success-box p {
+    color: #d0f0d8 !important;
+    font-size: 15px !important;
+    margin: 0 !important;
+  }
+  .success-box .tick {
+    font-size: 32px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  /* ERROR STATE */
+  .error-msg {
+    display: none;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #ffaaaa;
+    margin-top: 8px;
+  }
+
+  /* TAGLINE */
+  .tagline {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 18px 40px 12px;
+  }
+  .tagline p {
+    font-family: Georgia, serif;
+    font-size: 13px;
+    font-style: italic;
+    font-weight: bold;
+    color: #1a2a5e;
+  }
+
+  /* FOOTER */
+  .footer {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 4px 40px 22px;
+  }
+  .footer p {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    color: #999999;
+    margin-bottom: 4px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 500px) {
+    .logo-section, .headline, .subheading, .body-copy,
+    .formats, .signup-section, .tagline, .footer {
+      padding-left: 22px;
+      padding-right: 22px;
+    }
+    .headline h1 { font-size: 21px; }
+    .format-grid { flex-direction: column; }
+    .form-row { flex-direction: column; }
+    .form-row button { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- BANNER -->
+  <div class="banner">
+    <img src="https://lh7-rt.googleusercontent.com/formsz/AN7BsVBVM0oXEf7PToy9FrO_3nf5Y8y8vutm8GqReC35r-4VWzEUg2KAKhr6BNUoPCZ2-HVDOHyDQPFOXD50mS5BNzwVIi8Tz5VT_mLlwQGR5uCP69nsPq7E2BcBsfFYchSypCrFVgB90Jy_i0iVHXRZdVuzmi1mhY__zRmpQO4yqg=s2048?key=YNadzvgNLGctbfGJoWVx0A" alt="P4C Newsroom">
+  </div>
+
+  <!-- LOGO -->
+  <div class="logo-section">
+    <img src="https://lh7-rt.googleusercontent.com/formsz/AN7BsVB8BVPkJwKyDRpAnZIP0Eo2l8xk66XQnbMVnZgvwgO6YuOH_opWzJNOXVsfuF-5rExXd4dT2CexEjV2Z0lti3cq4C4MI3zuwFD1MkLhE_FglWssZDJzwHbEmPmst7OLnS7O0EKgnaMR1oKACkXQVAzwyO1pT9ZxnDoU=s2048?key=gN1EE4lMJCD-P-P1TTf8hQ" alt="P4C Newsroom">
+  </div>
+
+  <!-- HEADLINE -->
+  <div class="headline">
+    <h1>Today's News. Tomorrow's Thinkers.</h1>
+  </div>
+
+  <!-- SUBHEADING -->
+  <div class="subheading">
+    <p>Resources that help educators turn breaking news into brilliant debates.</p>
+  </div>
+
+  <!-- RED DIVIDER -->
+  <div class="divider"></div>
+
+  <!-- BODY COPY -->
+  <div class="body-copy">
+    <p>A big story breaks. Your students already have opinions. Most of those opinions came from social media.</p>
+    <p>P4C Newsroom gives you a better starting point. Every week you receive a ready-to-teach lesson pack built around a real, current news story. <strong>For free.</strong></p>
+  </div>
+
+  <!-- THREE FORMATS -->
+  <div class="formats">
+    <div class="formats-inner">
+      <p class="label">Three formats. One for every class:</p>
+      <div class="format-grid">
+        <div class="format-card red">
+          <div class="tag">LITE</div>
+          <p>For younger students. Accessible language and simpler activities.</p>
+        </div>
+        <div class="format-card navy">
+          <div class="tag">REGISTRATION</div>
+          <p>A focused 20-min session. No prep. Just open it and go.</p>
+        </div>
+        <div class="format-card navy">
+          <div class="tag">FULL</div>
+          <p>For your true young philosophers. A deep, hour-long session.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIGN UP -->
+  <div class="signup-section">
+    <h2>Get your free pack every week</h2>
+    <p>Enter your email below and your first pack will be on its way. No spam. Unsubscribe any time.</p>
+
+    <div id="form-area">
+      <form id="signup-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <input
+            type="email"
+            id="email-input"
+            name="entry.378688678"
+            placeholder="Your email address"
+            required
+            autocomplete="email"
+          >
+          <button type="submit" id="submit-btn">Subscribe Free</button>
+        </div>
+        <p class="privacy-note">Your email is used only to send your weekly pack. We never share it.</p>
+        <p class="error-msg" id="error-msg">Something went wrong. Please try again or email us at p4cnewsroom@gmail.com</p>
+      </form>
+    </div>
+
+    <div class="success-box" id="success-box">
+      <span class="tick">&#10003;</span>
+      <p>You are in! Check your inbox shortly for a welcome email with your first pack link. See you every week.</p>
+    </div>
+  </div>
+
+  <!-- RED DIVIDER -->
+  <div class="divider"></div>
+
+  <!-- TAGLINE -->
+  <div class="tagline">
+    <p>Giving you the power to tackle today's news with tomorrow's thinkers.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>P4C Newsroom &nbsp;|&nbsp; p4cnewsroom@gmail.com</p>
+    <p>We will never share your email address.</p>
+  </div>
+
+</div>
+
+<script>
+  const FORM_ACTION = "https://docs.google.com/forms/d/1Eo6fo0ox90qpd0bkKAfKxIfeMkHlTjzHGI-DhPNXNtA/formResponse";
+  const ENTRY_FIELD = "entry.378688678";
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const email = document.getElementById("email-input").value.trim();
+    const btn = document.getElementById("submit-btn");
+    const errorMsg = document.getElementById("error-msg");
+
+    if (!email) return;
+
+    btn.disabled = true;
+    btn.textContent = "Sending...";
+    errorMsg.style.display = "none";
+
+    const formData = new FormData();
+    formData.append(ENTRY_FIELD, email);
+
+    // Google Forms blocks CORS but still records the submission with no-cors
+    fetch(FORM_ACTION, {
+      method: "POST",
+      mode: "no-cors",
+      body: formData
+    })
+    .then(() => {
+      // no-cors means we never get an error response - treat as success
+      document.getElementById("form-area").style.display = "none";
+      document.getElementById("success-box").style.display = "block";
+    })
+    .catch(() => {
+      btn.disabled = false;
+      btn.textContent = "Subscribe Free";
+      errorMsg.style.display = "block";
+    });
+  }
+</script>
+
+</body>
+</html>
